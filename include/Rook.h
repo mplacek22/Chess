@@ -7,9 +7,9 @@
 #include "Piece.h"
 
 
-class Root : public Piece{
+class Rook : public Piece{
 public:
-    explicit Root(const Color color)
+    explicit Rook(const Color color)
         : Piece(color) {
         if (color == Color::WHITE)
             name_ = 'R';
