@@ -7,7 +7,7 @@
 #include "Piece.h"
 
 
-class Bishop: public Piece {
+class Bishop : public Piece {
 public:
     explicit Bishop(const Color color)
         : Piece(color) {
@@ -17,7 +17,6 @@ public:
             name_ = 'b';
     }
 };
-
 
 
 #endif //BISHOP_H

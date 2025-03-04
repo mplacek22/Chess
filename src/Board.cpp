@@ -2,15 +2,15 @@
 // Created by User on 04.03.2025.
 //
 
-#include "Board.h"
+#include "../include/Board.h"
 
 #include <iostream>
 
-#include "Bishop.h"
-#include "Knight.h"
-#include "Pawn.h"
-#include "Queen.h"
-#include "Root.h"
+#include "../include/Bishop.h"
+#include "../include/Knight.h"
+#include "../include/Pawn.h"
+#include "../include/Queen.h"
+#include "../include/Root.h"
 
 Board::Board() {
     initialize();
@@ -48,19 +48,16 @@ void Board::initialize() {
 void Board::display() const {
     std::cout << "   a b c d e f g h\n  -----------------" << std::endl;
     for (int i = 7; i >= 0; --i) {
-        std::string line = std::to_string(i+1) + "| ";
+        std::string line = std::to_string(i + 1) + "| ";
         for (int j = 0; j < 8; ++j) {
             if (board_[i][j] != nullptr) {
                 line += board_[i][j]->name();
-            }
-            else
+            } else
                 line += '.';
             line += ' ';
         }
-        line += '|' + std::to_string(i+1);
+        line += '|' + std::to_string(i + 1);
         std::cout << line << std::endl;
     }
     std::cout << "  -----------------\n   a b c d e f g h" << std::endl;
-
-
 }

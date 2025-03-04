@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Board.h"
+#include "include/Board.h"
 
 int main() {
     const Board board;
