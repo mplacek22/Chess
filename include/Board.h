@@ -13,14 +13,20 @@
 class Board {
 public:
     Board();
-    ~Board();
+
+    ~Board() = default;
+
     void initialize();
+
     void display() const;
+
+    void executeMove(const Coordinate &source, const Coordinate &destination);
+
+    void restart();
 
 private:
     std::unique_ptr<Piece> board_[8][8];
 };
-
 
 
 #endif //BOARD_H

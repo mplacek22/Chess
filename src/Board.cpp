@@ -16,10 +16,6 @@ Board::Board() {
     initialize();
 }
 
-Board::~Board() {
-    //todo
-}
-
 void Board::initialize() {
     board_[0][0] = std::make_unique<Rook>(Color::WHITE);
     board_[0][1] = std::make_unique<Knight>(Color::WHITE);
@@ -60,4 +56,17 @@ void Board::display() const {
         std::cout << line << std::endl;
     }
     std::cout << "  -----------------\n   a b c d e f g h" << std::endl;
+}
+
+void Board::executeMove(const Coordinate& source, const Coordinate& destination) {
+    if (board_[source.rank()][source.file()] == nullptr) {
+        throw std::invalid_argument("There is no piece on source coordinate");
+    }
+    board_[destination.rank()][destination.file()] =
+        std::move(board_[source.rank()][source.file()]);
+}
+
+
+void Board::restart() {
+    initialize();
 }

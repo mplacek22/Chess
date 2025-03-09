@@ -7,7 +7,7 @@
 #include "Piece.h"
 
 
-class Pawn : public Piece{
+class Pawn final : public Piece {
 public:
     explicit Pawn(const Color color)
         : Piece(color) {
@@ -16,8 +16,9 @@ public:
         else
             name_ = 'p';
     }
-};
 
+    // bool validateMove(const Coordinate &source, const Coordinate &target) override;
+};
 
 
 #endif //PAWN_H

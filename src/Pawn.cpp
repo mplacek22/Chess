@@ -3,3 +3,9 @@
 //
 
 #include "../include/Pawn.h"
+
+//
+// bool Pawn::validateMove(const Coordinate& source, const Coordinate& target) {
+//     if (color_ == Color::WHITE) {
+//     }
+// }
