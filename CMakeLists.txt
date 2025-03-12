@@ -17,7 +17,8 @@ add_executable(Chess
         src/Rook.cpp
         src/Game.cpp
         src/Move.cpp
-        main.cpp
+        src/SourcePieceHandler.cpp
+        src/SpecialMoveHandler.cpp
 )
 
 target_include_directories(Chess PRIVATE include)

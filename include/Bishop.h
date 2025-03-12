@@ -11,6 +11,7 @@ class Bishop : public Piece {
 public:
     explicit Bishop(const Color color)
         : Piece(color) {
+        type_ = PieceType::BISHOP;
         if (color == Color::WHITE)
             name_ = 'B';
         else

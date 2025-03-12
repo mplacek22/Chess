@@ -7,17 +7,17 @@
 #include "Piece.h"
 
 
-class Rook : public Piece{
+class Rook : public Piece {
 public:
     explicit Rook(const Color color)
         : Piece(color) {
+        type_ = PieceType::ROOK;
         if (color == Color::WHITE)
             name_ = 'R';
         else
             name_ = 'r';
     }
 };
-
 
 
 #endif //ROOT_H

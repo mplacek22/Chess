@@ -11,13 +11,14 @@ class King : public Piece {
 public:
     explicit King(Color color)
         : Piece(color) {
+        type_ = PieceType::KING;
+
         if (color == Color::WHITE)
             name_ = 'k';
         else
             name_ = 'K';
     }
 };
-
 
 
 #endif //KING_H

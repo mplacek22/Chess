@@ -2,13 +2,11 @@
 // Created by User on 04.03.2025.
 //
 
-#ifndef COORDINATE_H
-#define COORDINATE_H
+#pragma once
 #include <iostream>
 #include <stdexcept>
 
-#endif //COORDINATE_H
-
+template<size_t boardSize = 8>
 struct Coordinate {
     Coordinate(const int file, const int rank) {
         if (!validate(file, rank)) {
@@ -32,9 +30,13 @@ struct Coordinate {
         return std::string{static_cast<char>('a' + file_), static_cast<char>('1' + rank_)};
     }
 
+    bool operator==(const Coordinate<boardSize> &aCoordinate) const {
+        return this->file() == aCoordinate.file() && this->rank() == aCoordinate.rank();
+    };
+
     static bool validate(const std::string &chessNotation) {
-        return chessNotation[0] >= 'a' && chessNotation[0] <= 'h' && chessNotation[1] >= '1' &&
-               chessNotation[1] <= '8';
+        return chessNotation[0] >= 'a' && chessNotation[0] <= maxFile_ && chessNotation[1] >= '1' &&
+               chessNotation[1] <= maxRank_;
     }
 
     [[nodiscard]] int file() const {
@@ -49,7 +51,10 @@ private:
     int file_; //a-h
     int rank_; //1-8
 
+    static constexpr char maxFile_ = 'a' + boardSize - 1;
+    static constexpr char maxRank_ = '1' + boardSize - 1;
+
     static bool validate(const int file, const int rank) {
-        return file >= 0 && rank >= 0 && file < 8 && rank < 8;
+        return file >= 0 && rank >= 0 && file < boardSize && rank < boardSize;
     }
 };

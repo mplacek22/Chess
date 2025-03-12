@@ -11,11 +11,13 @@ class Pawn final : public Piece {
 public:
     explicit Pawn(const Color color)
         : Piece(color) {
+        type_ = PieceType::PAWN;
         if (color == Color::WHITE)
             name_ = 'P';
         else
             name_ = 'p';
     }
+
 
     // bool validateMove(const Coordinate &source, const Coordinate &target) override;
 };
