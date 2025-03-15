@@ -6,25 +6,23 @@
 #define HANDLER_H
 
 #include <memory>
-#include <Move.h>
-#include <Board.h>
-#include <Move.h>
+#include <utility>
 
-
+template<typename... Args>
 class Handler {
 protected:
-    std::unique_ptr<Handler> nextHandler;
+    std::unique_ptr<Handler<Args...> > nextHandler;
 
 public:
     Handler() = default;
 
-    void setNext(std::unique_ptr<Handler> next) {
+    void setNext(std::unique_ptr<Handler<Args...> > next) {
         nextHandler = std::move(next);
     }
 
-    virtual bool handle(Move& move, const Board& board, const Color currentPlayer) {
+    virtual bool handle(Args... args) {
         if (nextHandler) {
-            return nextHandler->handle(move, board, currentPlayer);
+            return nextHandler->handle(std::forward<Args>(args)...);
         }
         return true;
     }

@@ -4,19 +4,23 @@
 
 #ifndef SPECIALMOVEHANDLER_H
 #define SPECIALMOVEHANDLER_H
+#include <Move.h>
+
 #include "Handler.h"
 
 
-class SpecialMoveHandler final : public Handler {
+class Board;
+
+class SpecialMoveHandler final : public Handler<Move &, const Board &, Color> {
 public:
-    bool handle(Move& move, const Board& board, Color currentPlayer) override;
+    bool handle(Move &move, const Board &board, Color currentPlayer) override;
 
 private:
-    bool isEnPassant(Move& move, const Board& board);
+    bool isEnPassant(Move &move, const Board &board);
 
-    static bool isPromotion(const Move& move, Color currentPlayer);
+    static bool isPromotion(const Move &move, Color currentPlayer);
 
-    static bool isCastling(Move& move, const Board& board, Color currentPlayer);
+    static bool isCastling(Move &move, const Board &board, Color currentPlayer);
 };
 
 

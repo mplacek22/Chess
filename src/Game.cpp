@@ -6,7 +6,7 @@
 
 #include <sstream>
 
-#include "OwnershipValidationHandler.h"
+#include "PieceOwnershipHandler.h"
 #include "SourcePieceHandler.h"
 #include "SpecialMoveHandler.h"
 
@@ -112,7 +112,7 @@ void Game::displayPromotionError() {
 }
 
 bool Game::validateMove(Move& move) const {
-    return moveValidator_->handle(move, _board, _currentPlayer);
+    return moveValidator_->handle(move, std::as_const(_board), _currentPlayer);
 }
 
 

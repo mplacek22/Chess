@@ -39,14 +39,14 @@ private:
     GameStatus _status = GameStatus::NEW;
     std::pmr::vector<Move> _moves;
 
-    std::unique_ptr<Handler> moveValidator_;
+    std::unique_ptr<Handler<Move &, const Board &, Color> > moveValidator_;
     static const std::unordered_set<PieceType> PROMOTION_PIECES;
 
     static Move readMove();
 
     static std::string readUserInput();
 
-    PieceType getPromotionPieceTypeFromPlayer() const;
+    [[nodiscard]] PieceType getPromotionPieceTypeFromPlayer() const;
 
     void displayPromotionInfo() const;
 

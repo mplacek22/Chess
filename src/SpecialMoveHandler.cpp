@@ -4,7 +4,10 @@
 
 #include "SpecialMoveHandler.h"
 
-bool SpecialMoveHandler::handle(Move& move, const Board& board, const Color currentPlayer) {
+#include <Board.h>
+
+
+bool SpecialMoveHandler::handle(Move& move, const Board& board, Color currentPlayer) {
     if (isPromotion(move, currentPlayer)) {
         move.moveType = MoveType::PROMOTION;
     } else if (isCastling(move, board, currentPlayer)) {

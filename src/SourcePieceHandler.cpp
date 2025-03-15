@@ -4,7 +4,9 @@
 
 #include "SourcePieceHandler.h"
 
-bool SourcePieceHandler::handle(Move& move, const Board& board, const Color currentPlayer) {
+#include <Board.h>
+
+bool SourcePieceHandler::handle(Move& move, const Board& board, Color currentPlayer) {
     const auto piece = board.getPieceAt(move.source);
     if (!piece) {
         return false;

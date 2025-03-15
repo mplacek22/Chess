@@ -6,9 +6,13 @@
 #define PIECEMOVEHANDLER_H
 #include "Handler.h"
 
-class SourcePieceHandler final : public Handler {
+enum class Color;
+class Board;
+struct Move;
+
+class SourcePieceHandler final : public Handler<Move &, const Board &, Color> {
 public:
-    bool handle(Move& move, const Board& board, const Color currentPlayer) override;
+    bool handle(Move &move, const Board &board, Color currentPlayer) override;
 };
 
 
